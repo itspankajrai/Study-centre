@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#00C853</color>
+    <color name="colorPrimaryDark">#00C853</color>
+    <color name="colorAccent">#00C853</color>
+    <!-- font colors -->
+    <color name="black">#f000</color>
+    <color name="white">#ffff</color>
+    <color name="red">#DD2C00</color>
+    <color name="colorNavIcon">#dae9f6</color>
+    <color name="colorNavText">#01294b</color>
+    <color name="chipbackground">#E8EAF6</color>
+</resources>

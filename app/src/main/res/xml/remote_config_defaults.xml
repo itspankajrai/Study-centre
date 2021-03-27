@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- START xml_defaults -->
+<defaultsMap>
+    <entry>
+        <key>loading_phrase</key>
+        <value>Fetching config…</value>
+    </entry>
+    <entry>
+        <key>welcome_message_caps</key>
+        <value>false</value>
+    </entry>
+    <entry>
+        <key>welcome_message</key>
+        <value>Welcome to my awesome app!</value>
+    </entry>
+    <!-- my own code -->
+    <entry>
+        <key>no_timetable</key>
+        <value>No timetable found for </value>
+    </entry>
+    <entry>
+        <key>error_timetable</key>
+        <value>No Exam TimeTable found, please try again later.</value>
+    </entry>
+    <entry>
+        <key>sem_1_timetable</key>
+        <value>true</value>
+    </entry>
+    <entry>
+        <key>sem_2_timetable</key>
+        <value>Connect to internet first</value>
+    </entry>
+    <entry>
+        <key>sem_3_timetable</key>
+        <value>Connect to internet first</value>
+    </entry>
+    <entry>
+        <key>sem_4_timetable</key>
+        <value>Connect to internet first</value>
+    </entry>
+    <entry>
+        <key>sem_5_timetable</key>
+        <value>Connect to internet first</value>
+    </entry>
+    <entry>
+        <key>sem_6_timetable</key>
+        <value>Connect to internet first</value>
+    </entry>
+    <entry>
+        <key>sem1_sub1</key>
+        <value>Subject 1</value>
+
+    </entry>
+    <entry>
+        <key>sem1_date1</key>
+        <value>date 1</value>
+    </entry>
+    <entry>
+        <key>sem1_time1</key>
+        <value>time 1</value>
+    </entry>
+
+</defaultsMap>

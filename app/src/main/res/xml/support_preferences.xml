@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Feedback"
+        xmlns:android="http://schemas.android.com/apk/res/android" >
+        <Preference
+            android:title="Mail us"
+            android:summary="Send your Feedback to us. "
+            android:icon="@drawable/about">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="mailto:itispankajrai@gmail.com">
+                <extra
+                    android:name="android.intent.extra.SUBJECT"
+                    android:value="Feedback"/>
+                <extra
+                    android:name="android.intent.extra.TEXT"
+                    android:value="Text of Feedback"/>
+            </intent>
+        </Preference>
+        <Preference
+            android:key="study_telegram"
+            android:title="@string/study_telegram_title"
+            android:summary="@string/study_telegram_summary"
+            android:icon="@drawable/telegram">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://t.me/studycenterapp"/>
+        </Preference>
+    </PreferenceCategory>
+    <com.Rai.studycenter.helpers.custom.MyPreferenceCategory
+        android:key="links"
+        android:title="@string/study_links">
+        <Preference
+            android:key="study_telegram"
+            android:title="Announcements"
+            android:summary="Official announcements channel"
+            android:icon="@drawable/announcements">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://t.me/studycenterbroadcast"/>
+        </Preference>
+        <Preference
+            android:key="study_telegram"
+            android:title="Changelog"
+            android:summary="View recent changes is app"
+            android:icon="@drawable/changelog">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://t.me/studycenterbroadcast"/>
+        </Preference>
+    </com.Rai.studycenter.helpers.custom.MyPreferenceCategory>
+</PreferenceScreen>

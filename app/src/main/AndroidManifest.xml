@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.Rai.studycenter">
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".firebase.ui.FirebaseMenuActivity"></activity>
+        <activity android:name=".firebase.ui.TimeTableFirebaseActivity" />
+        <activity android:name=".note_module.NoteViewerActivity" />
+        <activity
+            android:name=".firebase.ui.Firebase_StudyMaterial"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="www.studycentre.com"
+                    android:pathPrefix="/studyMaterial"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".firebase.profile.UserProfile" />
+        <activity android:name=".firebase.login.Login" />
+        <activity android:name=".note_module.NewNote" />
+        <activity android:name=".utils.Downloads" />
+
+        <meta-data
+            android:name="com.google.android.gms.vision.DEPENDENCIES"
+            android:value="ocr" />
+
+        <activity
+            android:name=".settings.SettingsActivity"
+            android:label="@string/title_activity_settings" />
+        <activity android:name=".papers.paper_display" />
+        <activity android:name=".mock_test.mock_test_result" />
+        <activity android:name=".mock_test.mock_testmcq" />
+        <activity android:name=".helpers.Pdf_View" />
+        <activity android:name=".gridSelect.timetable" />
+        <activity android:name=".gridSelect.blackbook" />
+        <activity android:name=".gridSelect.papers" />
+        <activity android:name=".gridSelect.mock_test" />
+        <activity
+            android:name=".gridSelect.notes"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="www.studycentre.com"
+                    android:pathPrefix="/notes"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".gridSelect.practicals" />
+        <activity android:name=".gridSelect.Study_Material" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+    </application>
+
+</manifest>

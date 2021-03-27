@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+  <androidx.cardview.widget.CardView
+      android:id="@+id/card"
+      android:animateLayoutChanges="true"
+      app:cardUseCompatPadding="true"
+      app:cardCornerRadius="4dp"
+      app:cardElevation="4dp"
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      tools:ignore="MissingConstraints">
+      <LinearLayout
+          android:id="@+id/collapase"
+          android:visibility="gone"
+            android:orientation="vertical"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+         <LinearLayout
+             android:paddingBottom="@dimen/activity_vertical_margin"
+             android:paddingLeft="@dimen/activity_horizontal_margin"
+             android:paddingRight="@dimen/activity_horizontal_margin"
+             android:paddingTop="@dimen/activity_vertical_margin"
+             android:orientation="vertical"
+             android:layout_width="wrap_content"
+             android:layout_gravity="start"
+             android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/no"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="1"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        tools:ignore="Suspicious0dp" />
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Semester 1 Quiz"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        />
+             <TextView
+                 android:id="@+id/description"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="Semester 1 Quiz"
+                 android:layout_marginTop="50px"
+
+                 android:textColor="#B5000000"
+                 android:textSize="15sp"
+                 />
+         </LinearLayout>
+          <LinearLayout
+              android:layout_gravity="end"
+
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent">
+          <Button
+              android:id="@+id/expand"
+              android:layout_width="50sp"
+              android:layout_height="50sp"
+              android:background="@color/colorPrimary"
+              android:text="+"
+              android:textColor="#ffff"
+              android:textSize="20sp"
+              tools:ignore="MissingConstraints" />
+          </LinearLayout>
+
+
+      </LinearLayout>
+   <LinearLayout
+       android:background="@color/cardview_light_background"
+       android:id="@+id/expand_card"
+       android:paddingBottom="@dimen/activity_vertical_margin"
+       android:paddingLeft="@dimen/activity_horizontal_margin"
+       android:paddingRight="@dimen/activity_horizontal_margin"
+       android:paddingTop="@dimen/activity_vertical_margin"
+       android:orientation="vertical"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+       <RelativeLayout
+           android:padding="10px"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+
+         <TextView
+           android:id="@+id/mu_quest"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="20sp"
+             android:textStyle="bold"
+             android:textColor="#f000"
+           android:text="Subject"
+           android:layout_marginLeft="10px"
+           android:layout_marginTop="8px"
+           />
+
+
+           <TextView
+               android:id="@+id/mu_ans"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="18sp"
+               android:text="Subject"
+               android:textColor="#f000"
+               android:layout_marginLeft="10px"
+               android:layout_marginTop="8px"
+               android:layout_below="@+id/mu_quest"
+
+               />
+       </RelativeLayout>
+       <LinearLayout
+           android:orientation="vertical"
+           android:layout_width="wrap_content"
+           android:layout_gravity="end"
+           android:layout_height="wrap_content">
+
+       <Button
+           android:id="@+id/collap"
+           android:layout_width="50sp"
+           android:layout_height="50sp"
+           android:text="-"
+           android:textColor="#ffff"
+           android:textSize="20dp"
+           android:background="@color/colorPrimary"
+           android:layout_gravity="bottom|end"
+
+           tools:ignore="MissingConstraints" />
+
+       </LinearLayout>
+   </LinearLayout>
+  </androidx.cardview.widget.CardView>
+</LinearLayout>

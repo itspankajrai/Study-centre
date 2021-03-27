@@ -1,0 +1,46 @@
+<TableLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <TableRow android:padding="5dp">
+        <TextView
+            android:id="@+id/tvDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Monday"
+            android:textAlignment="center"
+            android:textColor="#FA000000"
+
+            android:textSize="14dp" />
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="15/03/2021"
+            android:textAlignment="center"
+            android:textColor="#FA000000"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tvSubjects"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Cyber Law"
+            android:textAlignment="center"
+            android:textColor="#FA000000"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:textColor="#FA000000"
+            android:textSize="14dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="11:00-12:00"
+            android:textAlignment="center"
+            />
+    </TableRow>
+</TableLayout>
