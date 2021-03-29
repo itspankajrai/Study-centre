@@ -54,8 +54,6 @@ public class Pdf_View extends AppCompatActivity implements OnPageChangeListener,
         pdfFile= new File(Environment.getExternalStorageDirectory() , "/StudyCenter/"+paths);
         pdfView = (PDFView) findViewById(R.id.pdfView);
         displayFromAsset(pdfFile);
-
-
     }
 
     private void displayFromAsset(File assetFileName) {

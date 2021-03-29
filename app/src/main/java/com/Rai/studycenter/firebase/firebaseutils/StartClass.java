@@ -50,7 +50,6 @@ public  class StartClass implements start_interface{
         }
     }
     private void file_detection(String file){
-
         checkF= new File(Environment.getExternalStorageDirectory() , "/StudyCenter/"+file);
     }
 }

@@ -1,15 +1,17 @@
 package com.Rai.studycenter.gridSelect;
 
-import android.content.Context;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import com.Rai.studycenter.R;
 import com.Rai.studycenter.mock_test.mock_testmcq;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
+
 import static com.Rai.studycenter.constant.Constant.answers;
 import static com.Rai.studycenter.constant.Constant.opt;
 import static com.Rai.studycenter.constant.Constant.questions;
@@ -20,12 +22,14 @@ import static com.Rai.studycenter.constant.Constant.sicQuestions;
 public class mock_test extends AppCompatActivity {
 
     ChipGroup chipGroup;
+
     static final String[] sem_list = new String[] {
             "Sem 6","Sem 1", "Sem 2","Sem 3", "Sem 4","Sem 5" };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.grd_mock_test);
+
         chipGroup=findViewById(R.id.mock_chip_group);
         chipGroup.setSingleSelection(true);
         looIt(sem_list,chipGroup);
@@ -63,14 +67,16 @@ public class mock_test extends AppCompatActivity {
         });
     }
     void checkSem(String name){
-        switch (name){
+
+
+        /* switch (name){
             case "Sem 1":
                 changeActivity(questions,answers,opt);
                 break;
             case "Sem 2":
                 changeActivity(sicQuestions,sicAnswers,sicOptions);
                 break;
-        }
+        }*/
     }
     void looIt(String[] array,ChipGroup chipGroup){
         for(int i=0;i<array.length;i++){
@@ -83,5 +89,9 @@ public class mock_test extends AppCompatActivity {
         sem1.putExtra("ans", ans);
         sem1.putExtra("crt", options);
         startActivity(sem1);
+    }
+
+    void createDialog(String name){
+
     }
 }

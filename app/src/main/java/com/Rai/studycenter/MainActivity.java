@@ -2,8 +2,10 @@ package com.Rai.studycenter;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +23,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.Rai.studycenter.adapters.Grid_Adapter;
+import com.Rai.studycenter.firebase.firebaseutils.StartClass;
 import com.Rai.studycenter.firebase.login.Login;
 import com.Rai.studycenter.firebase.profile.UserProfile;
 import com.Rai.studycenter.firebase.ui.FirebaseMenuActivity;
@@ -33,19 +36,24 @@ import com.Rai.studycenter.gridSelect.notes;
 import com.Rai.studycenter.gridSelect.papers;
 import com.Rai.studycenter.gridSelect.practicals;
 import com.Rai.studycenter.settings.SettingsActivity;
+import com.Rai.studycenter.utils.DownloadFileAsync;
 import com.Rai.studycenter.utils.Downloads;
 import com.Rai.studycenter.utils.NetworUtils;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.io.File;
+
 import static android.Manifest.permission.ACCESS_NETWORK_STATE;
 import static android.Manifest.permission.INTERNET;
 import static android.Manifest.permission.READ_PHONE_STATE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    StartClass startClass;
+    String blackBookUrl="http://archive.mu.ac.in/myweb_test/syllFybscit/PCS.pdf";
+    File checkFile;
     private FirebaseAuth mAuth;
     GridView gridView;
     MenuItem menuItem;
@@ -55,8 +63,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
+        startClass=new StartClass(this);
         mAuth = FirebaseAuth.getInstance();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -81,7 +89,14 @@ public class MainActivity extends AppCompatActivity
                         changeActivity(papers.class);
                         break;
                     case 4:
-                        changeActivity(blackbook.class);
+                        if(checkFile()){
+                            startClass.changeActivity(MainActivity.this,"pdf_path", "blackbook.pdf");
+                        }
+                        else {
+                            snack("Blackbook download started");
+                            new DownloadFileAsync(MainActivity.this,1,"blackbook.pdf").execute(blackBookUrl);
+                        }
+                             /*changeActivity(blackbook.class);*/
                         break;
                     case 5:
                         changeActivity(TimeTableFirebaseActivity.class);
@@ -267,6 +282,10 @@ public class MainActivity extends AppCompatActivity
         Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "We are working on this function...", Snackbar.LENGTH_LONG);
         snackbar.show();
     }
+    private void snack(String value){
+        Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), value, Snackbar.LENGTH_LONG);
+        snackbar.show();
+    }
     @Override
     protected void onStart() {
         NetworUtils b = new NetworUtils();
@@ -292,5 +311,14 @@ public class MainActivity extends AppCompatActivity
     public void logOut(){
             Toast.makeText(MainActivity.this,"Logging out "+mAuth.getCurrentUser().getDisplayName(),Toast.LENGTH_LONG).show();
             mAuth.signOut();
+    }
+    Boolean checkFile(){
+        checkFile= new File(Environment.getExternalStorageDirectory() , "/StudyCenter/blackbook.pdf");
+        if(checkFile.exists()){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }
