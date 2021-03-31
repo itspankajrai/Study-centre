@@ -76,6 +76,9 @@ public class Pdf_View extends AppCompatActivity implements OnPageChangeListener,
                 .pageSnap(true) // snap pages to screen boundaries
                 .pageFling(true) // make a fling change only a single page like ViewPager
                 .load();
+
+
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -112,7 +115,6 @@ public class Pdf_View extends AppCompatActivity implements OnPageChangeListener,
                 nighsite("Night mode Deactivated");
                 Drawable icon = getResources().getDrawable(R.drawable.night_mode);
                 icon.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_IN);
-
                 item.setIcon(icon);
                 mode=false;
             }

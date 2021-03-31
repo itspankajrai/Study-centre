@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         changeActivity(papers.class);
                         break;
                     case 4:
-                        if(checkFile()){
+                        if(checkFile("blackbook.pdf")){
                             startClass.changeActivity(MainActivity.this,"pdf_path", "blackbook.pdf");
                         }
                         else {
@@ -105,7 +105,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         changeActivity(notes.class);
                         break;
                     case 7:
-                        snack();
+                        if(checkFile("results.pdf")){
+                            startClass.changeActivity(MainActivity.this,"pdf_path", "results.pdf");
+                        }
+                        else {
+                            snack("results download started");
+                            new DownloadFileAsync(MainActivity.this,1,"results.pdf").execute(blackBookUrl);
+                        }
                         break;
                     default:
                         snack();
@@ -312,8 +318,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Toast.makeText(MainActivity.this,"Logging out "+mAuth.getCurrentUser().getDisplayName(),Toast.LENGTH_LONG).show();
             mAuth.signOut();
     }
-    Boolean checkFile(){
-        checkFile= new File(Environment.getExternalStorageDirectory() , "/StudyCenter/blackbook.pdf");
+    Boolean checkFile(String filename){
+        checkFile= new File(Environment.getExternalStorageDirectory() , "/StudyCenter/"+filename);
         if(checkFile.exists()){
             return true;
         }
