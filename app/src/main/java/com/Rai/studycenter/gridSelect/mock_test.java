@@ -4,10 +4,15 @@ package com.Rai.studycenter.gridSelect;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+
 import com.Rai.studycenter.R;
+import com.Rai.studycenter.firebase.firebaseutils.StartClass;
 import com.Rai.studycenter.mock_test.mock_testmcq;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
@@ -20,18 +25,22 @@ import static com.Rai.studycenter.constant.Constant.sicOptions;
 import static com.Rai.studycenter.constant.Constant.sicQuestions;
 
 public class mock_test extends AppCompatActivity {
-
-    ChipGroup chipGroup;
-
+    StartClass startClass;
+    ChipGroup chipGroup,chipGroupSubejcts;
+    CardView cardView;
     static final String[] sem_list = new String[] {
             "Sem 6","Sem 1", "Sem 2","Sem 3", "Sem 4","Sem 5" };
+    String currentSem;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.grd_mock_test);
-
+        startClass=new StartClass(this);
         chipGroup=findViewById(R.id.mock_chip_group);
         chipGroup.setSingleSelection(true);
+        chipGroupSubejcts=findViewById(R.id.mock_text_subjects);
+        chipGroupSubejcts.setSingleSelection(true);
+        cardView=findViewById(R.id.mockcardview);
         looIt(sem_list,chipGroup);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -58,26 +67,57 @@ public class mock_test extends AppCompatActivity {
             public void onCheckedChanged(ChipGroup group, int checkedId) {
                 Chip chip1=findViewById(checkedId);
                 if(chip1!=null) {
-                        checkSem(chip1.getText().toString());
+
                         chip1.setChecked(false);
+                        getSemester(chip1);
+                        cardView.setVisibility(View.VISIBLE);
+                }
+                else {
+                    cardView.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+    }
+    ////
+    public void getSemester(Chip id){
+        if(id!=null){
+            currentSem=id.getText().toString().replaceAll(" ","");
+            setSubject(id.getText().toString());
+        }
+        else {
+
+        }
+    }
+
+    public void setSubject(String name){
+        chipGroupSubejcts.removeAllViewsInLayout();
+        for (int i = 0; i <startClass.getSemArray(name).size() ; i++) {
+            subjectlistchip(startClass.getSemArray(name).get(i),chipGroupSubejcts);
+        }
+
+    }
+
+    private void subjectlistchip(String s, ChipGroup chipGroupSubejcts) {
+        final Chip chip=(Chip) this.getLayoutInflater().inflate(R.layout.chip,null,false);
+        chip.setText(s);
+        chipGroupSubejcts.addView(chip,chipGroupSubejcts.getChildCount()-1);
+        chipGroupSubejcts.setOnCheckedChangeListener(new ChipGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(ChipGroup group, int checkedId) {
+                Chip chip1=findViewById(checkedId);
+                if(chip1!=null) {
+                    String sub_name = chip1.getText().toString();
+                    Toast.makeText(mock_test.this, "Opening mock test for "+sub_name, Toast.LENGTH_SHORT).show();
+                    changeActivity(questions,answers,opt);
+                    chip1.setChecked(false);
                 }
                 else {
                 }
             }
         });
     }
-    void checkSem(String name){
 
 
-        /* switch (name){
-            case "Sem 1":
-                changeActivity(questions,answers,opt);
-                break;
-            case "Sem 2":
-                changeActivity(sicQuestions,sicAnswers,sicOptions);
-                break;
-        }*/
-    }
     void looIt(String[] array,ChipGroup chipGroup){
         for(int i=0;i<array.length;i++){
             semListChipView(array[i],chipGroup);
@@ -91,7 +131,4 @@ public class mock_test extends AppCompatActivity {
         startActivity(sem1);
     }
 
-    void createDialog(String name){
-
-    }
 }

@@ -42,7 +42,7 @@
             android:layout_width="130dp"
             android:layout_height="wrap_content"/>
         <EditText
-            android:text="10:30 to 11:30"
+            android:text=""
             android:textAlignment="center"
             android:textSize="12dp"
             android:id="@+id/upload_time"
