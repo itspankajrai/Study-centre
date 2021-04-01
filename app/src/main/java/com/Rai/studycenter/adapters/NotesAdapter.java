@@ -29,24 +29,19 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
     DBHelper dbHelper;
     ArrayList<String> names,subname;
     List<Notesmodel> notesmodelList;
-    public List<Notesmodel> sizeofnotes;
-    int index;
+    ArrayList<String> idArray=new ArrayList<>();
+    String currentID;
     public  NotesAdapter(Context mContext){
         this.mContext=mContext;
         dbHelper=new DBHelper(mContext);
-        sizeofnotes= dbHelper.getNotes();
-        /* for (Notesmodel nl: notesmodelList){
-            sizeSql.add(nl.getId());
-        }*/
+
         notesmodelList= dbHelper.getNotes();
         names=new ArrayList<>();
         subname=new ArrayList<>();
         for (Notesmodel nl: notesmodelList){
-
             names.add(nl.getName());
             subname.add(nl.getDesc());
-            /*holder.Note_Title.setText(nl.getName());
-            holder.Note_Desc.setText(nl.getDesc());*/
+            idArray.add(String.valueOf(nl.getId()));
         }
         Log.d("SqlData", "onBindViewHolder: "+names);
     }
@@ -64,6 +59,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
     @Override
     public void onBindViewHolder(@NonNull final NotesViewHolder holder, final int position) {
         //getPosition(position);
+        currentID=idArray.get(position);
         holder.Note_Title.setText(names.get(position));
         holder.Note_Desc.setText(subname.get(position));
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
@@ -83,7 +79,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
 
     @Override
     public int getItemCount() {
-        return sizeofnotes.size();
+        return notesmodelList.size();
     }
 
     public class NotesViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
@@ -105,14 +101,14 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
                 @Override
                 public boolean onMenuItemClick(MenuItem menuItem) {
                     dbHelper.deleteNote(notesmodelList.get(getAdapterPosition()));
+                    notesmodelList.remove(getAdapterPosition());
                     CharSequence text="delete";
                     Toast toast = Toast.makeText(context, text, Toast.LENGTH_LONG);
                     toast.show();
                     //notifyItemChanged(getAdapterPosition());
                     notifyItemRemoved(getAdapterPosition());
                     notifyItemChanged(getAdapterPosition());
-                    notifyItemRangeRemoved(getAdapterPosition(),sizeofnotes.size());
-                    NotesViewHolder.this.notifyAll();
+                    notifyItemRangeRemoved(getAdapterPosition(),notesmodelList.size());
                     return true;
                 }
             });
@@ -131,9 +127,8 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
                     CharSequence text="Update";
                     Toast toast = Toast.makeText(context, text, Toast.LENGTH_LONG);
                     toast.show();
-
                     Intent intent=new Intent(mContext, NewNote.class);
-                    intent.putExtra("update_id", String.valueOf(getAdapterPosition()+1));
+                    intent.putExtra("update_id", currentID);
                     mContext.startActivity(intent);
                     return true;
                 }

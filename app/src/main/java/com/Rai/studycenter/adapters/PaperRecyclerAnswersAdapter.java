@@ -10,25 +10,26 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.Rai.studycenter.R;
+import com.Rai.studycenter.models.solvedPaper;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class PaperRecyclerAnswersAdapter extends RecyclerView.Adapter<PaperRecyclerAnswersAdapter.ViewHolder> {
-    ArrayList<String> id = new ArrayList<>();
-    ArrayList<String> title = new ArrayList<>();
-    ArrayList<String> description = new ArrayList<>();
-    ArrayList<String> question=new ArrayList<>();
-    ArrayList<String> answeraaray=new ArrayList<>();
+    List<solvedPaper> questionData;
     Context context;
     private int mExpandedPosition =-1;
+    ArrayList<String> question,answer;
 
-    public PaperRecyclerAnswersAdapter(Context applicationContext, ArrayList<String> id, ArrayList<String> title, ArrayList<String> description, ArrayList<String> question, ArrayList<String> answeraaray) {
-
+    public PaperRecyclerAnswersAdapter(Context applicationContext,  List<solvedPaper> questionData) {
         this.context = applicationContext;
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.question= question;
-        this.answeraaray= answeraaray;
+        this.questionData=questionData;
+        question=new ArrayList<>();
+        answer=new ArrayList<>();
+        for(solvedPaper paper:questionData){
+            question.add(paper.getQuestion());
+            answer.add(paper.getAnswers());
+        }
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -86,11 +87,10 @@ public class PaperRecyclerAnswersAdapter extends RecyclerView.Adapter<PaperRecyc
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
-        holder.idTextView.setText(id.get(position));
-        holder.titleTextView.setText(title.get(position));
-        holder.descriptionTextView.setText(description.get(position));
+        holder.titleTextView.setText(question.get(position));
+        holder.descriptionTextView.setText("Tap to show answer...");
         holder.mu_question.setText(question.get(position));
-        holder.mu_answer.setText(answeraaray.get(position));
+        holder.mu_answer.setText(answer.get(position));
         final boolean isExpanded = position==mExpandedPosition;
         holder.collapse.setVisibility(isExpanded?View.GONE:View.VISIBLE);
         holder.expand.setVisibility(isExpanded?View.VISIBLE:View.GONE);
@@ -108,7 +108,7 @@ public class PaperRecyclerAnswersAdapter extends RecyclerView.Adapter<PaperRecyc
 
     @Override
     public int getItemCount() {
-        return id.size();
+        return question.size();
     }
 
 
