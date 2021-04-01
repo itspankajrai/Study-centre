@@ -6,43 +6,32 @@
     android:animateLayoutChanges="true"
     android:layout_height="wrap_content">
 <LinearLayout
+    android:layout_marginTop="8dp"
     android:animateLayoutChanges="true"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
     <LinearLayout
         android:id="@+id/c1"
-        android:padding="20px"
+        android:padding="4dp"
+
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         >
         <TextView
+            android:layout_marginStart="8dp"
             android:id="@+id/change_layout_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="demo"
-            android:textColor="#F0000000"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:textSize="22sp"
-            />
-        <TextView
-            android:id="@+id/change_layout_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:textColor="#F0000000"
-            android:visibility="gone"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:textSize="22sp"
+            android:text="Subject name"
+            android:textSize="14sp"
             />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/c2"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:padding="20px"
+        android:padding="4dp"
         android:visibility="gone"
         android:orientation="vertical"
         >
@@ -58,22 +47,27 @@
             android:textColor="#fff"
             android:background="@color/colorPrimary"
             android:text="2016"
+            android:textSize="12sp"
             />
         <Button
+            android:layout_marginStart="4dp"
             android:id="@+id/change_layout_bt2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#fff"
             android:background="@color/colorPrimary"
             android:text="2017"
+            android:textSize="12sp"
             />
         <Button
+            android:layout_marginStart="4dp"
             android:textColor="#fff"
             android:background="@color/colorPrimary"
             android:id="@+id/change_layout_bt3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2018"
+            android:textSize="12sp"
             />
         </LinearLayout>
     </LinearLayout>

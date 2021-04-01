@@ -18,25 +18,23 @@ import com.Rai.studycenter.papers.paper_display;
 
 import java.util.ArrayList;
 
-public class PapersAdapter extends RecyclerView.Adapter<PapersAdapter.ViewHolder> {
-    ArrayList<String> main_text = new ArrayList<>();
-    ArrayList<String> button_text = new ArrayList<>();
+public class PapersListAdapter extends RecyclerView.Adapter<PapersListAdapter.ViewHolder> {
+    ArrayList<String> main_text;
 
     Context context;
     private int mExpandedPosition =-1;
 
-    public PapersAdapter(Context applicationContext, ArrayList<String> main_text, ArrayList<String> button_text) {
+    public PapersListAdapter(Context applicationContext, ArrayList<String> main_text) {
 
         this.context = applicationContext;
         this.main_text = main_text;
-        this.button_text = button_text;
   
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView newtext;
-        public TextView btntext;
+
         public Button btn;
         public Button btn2;
         public Button btn3;
@@ -45,7 +43,6 @@ public class PapersAdapter extends RecyclerView.Adapter<PapersAdapter.ViewHolder
         public ViewHolder(View itemView) {
             super(itemView);
             newtext = itemView.findViewById(R.id.change_layout_text);
-            btntext = itemView.findViewById(R.id.change_layout_id);
             btn = itemView.findViewById(R.id.change_layout_bt1);
             btn3 = itemView.findViewById(R.id.change_layout_bt2);
             btn2 = itemView.findViewById(R.id.change_layout_bt3);
@@ -57,20 +54,16 @@ public class PapersAdapter extends RecyclerView.Adapter<PapersAdapter.ViewHolder
     }
 
     @Override
-    public PapersAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_change_layout, parent, false);
-
-        PapersAdapter.ViewHolder viewHolder = new PapersAdapter.ViewHolder(view);
-
+    public PapersListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.paper_list_adapter, parent, false);
+        PapersListAdapter.ViewHolder viewHolder = new PapersListAdapter.ViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(final PapersAdapter.ViewHolder holder, final int position) {
+    public void onBindViewHolder(final PapersListAdapter.ViewHolder holder, final int position) {
 
         holder.newtext.setText(main_text.get(position));
-        holder.btntext.setText(button_text.get(position));
         final boolean isExpanded = position==mExpandedPosition;
         holder.c_1.setVisibility(isExpanded?View.GONE:View.VISIBLE);
         holder.c_2.setVisibility(isExpanded?View.VISIBLE:View.GONE);
@@ -78,17 +71,17 @@ public class PapersAdapter extends RecyclerView.Adapter<PapersAdapter.ViewHolder
         holder.btn.setVisibility(View.VISIBLE);
         holder.btn2.setVisibility(View.VISIBLE);
         holder.btn3.setVisibility(View.VISIBLE);
+
         //button maps
         holder.btn.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 switch(position){
-                    case 0:
-                        Toast.makeText(context,"Button worked 1.1",Toast.LENGTH_SHORT).show();
-                        break;
-                    case 1:
-                        Toast.makeText(context,"Button worked 1.2",Toast.LENGTH_SHORT).show();
+                    default:
+                        Intent i1 = new Intent (context, paper_display.class);
+                        i1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        context.startActivity(i1);
                         break;
                 }
             }
@@ -98,12 +91,12 @@ public class PapersAdapter extends RecyclerView.Adapter<PapersAdapter.ViewHolder
             @Override
             public void onClick(View v) {
                 switch(position){
-                    case 0:
-                        Toast.makeText(context,"Button worked 3.1",Toast.LENGTH_SHORT).show();
+                     default:
+                         Intent i1 = new Intent (context, paper_display.class);
+                         i1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                         context.startActivity(i1);
                         break;
-                    case 1:
-                        Toast.makeText(context,"Button worked 3.2",Toast.LENGTH_SHORT).show();
-                        break;
+
                 }
             }
         });
@@ -165,8 +158,9 @@ public class PapersAdapter extends RecyclerView.Adapter<PapersAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return button_text.size();
+        return main_text.size();
     }
+
 
 
 }

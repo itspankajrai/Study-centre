@@ -5,8 +5,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
-import android.view.animation.LayoutAnimationController;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -14,7 +12,7 @@ import android.widget.TextView;
 import com.Rai.studycenter.R;
 import java.util.ArrayList;
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
+public class PaperRecyclerAnswersAdapter extends RecyclerView.Adapter<PaperRecyclerAnswersAdapter.ViewHolder> {
     ArrayList<String> id = new ArrayList<>();
     ArrayList<String> title = new ArrayList<>();
     ArrayList<String> description = new ArrayList<>();
@@ -23,7 +21,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     Context context;
     private int mExpandedPosition =-1;
 
-    public RecyclerAdapter(Context applicationContext, ArrayList<String> id, ArrayList<String> title, ArrayList<String> description, ArrayList<String> question, ArrayList<String> answeraaray) {
+    public PaperRecyclerAnswersAdapter(Context applicationContext, ArrayList<String> id, ArrayList<String> title, ArrayList<String> description, ArrayList<String> question, ArrayList<String> answeraaray) {
 
         this.context = applicationContext;
         this.id = id;
@@ -76,11 +74,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     }
 
     @Override
-    public RecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public PaperRecyclerAnswersAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_card_view, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_paper_answer, parent, false);
 
-        RecyclerAdapter.ViewHolder viewHolder = new RecyclerAdapter.ViewHolder(view);
+        PaperRecyclerAnswersAdapter.ViewHolder viewHolder = new PaperRecyclerAnswersAdapter.ViewHolder(view);
 
         return viewHolder;
     }

@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.Rai.studycenter.R;
-import com.Rai.studycenter.adapters.RecyclerAdapter;
+import com.Rai.studycenter.adapters.PaperRecyclerAnswersAdapter;
 
 import java.util.ArrayList;
 
@@ -89,7 +89,7 @@ public class paper_display extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getApplication(), resId);
         recyclerView.setLayoutAnimation(animation);
-        mAdapter = new RecyclerAdapter(getApplicationContext(), id, title, description,question,answeraaray);
+        mAdapter = new PaperRecyclerAnswersAdapter(getApplicationContext(), id, title, description,question,answeraaray);
         recyclerView.setAdapter(mAdapter);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
