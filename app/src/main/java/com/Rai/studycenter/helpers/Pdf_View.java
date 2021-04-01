@@ -60,25 +60,19 @@ public class Pdf_View extends AppCompatActivity implements OnPageChangeListener,
         pdfFileName = assetFileName;
 
         pdfView.fromFile(pdfFile)
-
                 .defaultPage(pageNumber)
                 .enableSwipe(true)
                 .swipeHorizontal(true)
                 .onPageChange(this)
                 .enableAnnotationRendering(true)
                 .scrollHandle(new DefaultScrollHandle(this))
-                 // render annotations (such as comments, colors or forms)
-                .enableAntialiasing(true) // improve rendering a little bit on low-res screens
-                // spacing between pages in dp. To define spacing color, set view background
+                .enableAntialiasing(true)
                 .spacing(0)
-                .autoSpacing(false) // add dynamic spacing to fit each page on its own on the screen
+                .autoSpacing(false)
                 .pageFitPolicy(FitPolicy.BOTH)
-                .pageSnap(true) // snap pages to screen boundaries
-                .pageFling(true) // make a fling change only a single page like ViewPager
+                .pageSnap(true)
+                .pageFling(true)
                 .load();
-
-
-
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -135,8 +129,6 @@ public class Pdf_View extends AppCompatActivity implements OnPageChangeListener,
 
 
     public void nighsite(String text){
-
-
         snackbar.make(findViewById(android.R.id.content), text, Snackbar.LENGTH_SHORT)
                 .show();
 
@@ -183,11 +175,9 @@ public class Pdf_View extends AppCompatActivity implements OnPageChangeListener,
         Uri uri = FileProvider.getUriForFile(Pdf_View.this,
                 BuildConfig.APPLICATION_ID + ".provider",
                 imagePath);
-        //Uri uri = Uri.fromFile(imagePath);
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("image/*");
-        String shareBody = "Hey There,\nThis information is sent Via StudyCenter App\ncheckout StudyCenter App on Google Play ";
-       // sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "My Tweecher score");
+        String shareBody = "Hey There,\nThis information is sent Via StudyCentre App\ncheckout StudyCentre App on Google Play ";
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
         sharingIntent.putExtra(Intent.EXTRA_STREAM, uri);
 

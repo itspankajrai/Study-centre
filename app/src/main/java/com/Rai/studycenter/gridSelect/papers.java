@@ -105,11 +105,6 @@ public class papers extends AppCompatActivity {
     }
 
     public void setSubject(String name){
-
-        for (int i = 0; i <startClass.getSemArray(name).size() ; i++) {
-            //subjectlistchip(startClass.getSemArray(name).get(i),subList);
-
-        }
         setRecyclerView(startClass.getSemArray(name));
         mAdapter.notifyDataSetChanged();
 
@@ -119,26 +114,8 @@ public class papers extends AppCompatActivity {
 
         mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
-        //recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL));
         mAdapter = new PapersListAdapter(getApplicationContext(), arrayList);
         recyclerView.setAdapter(mAdapter);
     }
-   /* private void subjectlistchip(String s, ChipGroup chipGroupSubejcts) {
-        final Chip chip=(Chip) this.getLayoutInflater().inflate(R.layout.chip,null,false);
-        chip.setText(s);
-        chipGroupSubejcts.addView(chip,chipGroupSubejcts.getChildCount()-1);
-        chipGroupSubejcts.setOnCheckedChangeListener(new ChipGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(ChipGroup group, int checkedId) {
-                Chip chip1=findViewById(checkedId);
-                if(chip1!=null) {
-                    String sub_name = chip1.getText().toString();
-                    Toast.makeText(papers.this, "Opening mock test for "+sub_name, Toast.LENGTH_SHORT).show();
-                    chip1.setChecked(false);
-                }
-                else {
-                }
-            }
-        });
-    }*/
+
 }
