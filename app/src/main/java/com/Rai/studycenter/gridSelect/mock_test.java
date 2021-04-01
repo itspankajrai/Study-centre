@@ -78,7 +78,6 @@ public class mock_test extends AppCompatActivity {
             }
         });
     }
-    ////
     public void getSemester(Chip id){
         if(id!=null){
             currentSem=id.getText().toString().replaceAll(" ","");
