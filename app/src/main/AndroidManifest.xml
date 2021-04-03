@@ -23,7 +23,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".firebase.ui.FirebaseMenuActivity"></activity>
+        <activity android:name=".gridSelect.ResultActivity"></activity>
+        <activity android:name=".firebase.ui.FirebaseMenuActivity" />
         <activity android:name=".firebase.ui.TimeTableFirebaseActivity" />
         <activity android:name=".note_module.NoteViewerActivity" />
         <activity
@@ -34,6 +35,7 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data
                     android:host="www.studycentre.com"
                     android:pathPrefix="/studyMaterial"
@@ -68,6 +70,7 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data
                     android:host="www.studycentre.com"
                     android:pathPrefix="/notes"

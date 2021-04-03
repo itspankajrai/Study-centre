@@ -4,14 +4,24 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
+
+import androidx.annotation.RequiresApi;
 
 import com.Rai.studycenter.R;
 import com.Rai.studycenter.helpers.Pdf_View;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -19,6 +29,7 @@ import static com.Rai.studycenter.constant.Constant.firebaseCollegeKey;
 import static com.Rai.studycenter.constant.Constant.firebasePref;
 
 public  class StartClass implements start_interface{
+    StorageReference mStorageReference;
     SharedPreferences sharedPreferences;
     Context mContext;
     File checkF ;
@@ -82,5 +93,37 @@ public  class StartClass implements start_interface{
             sem= new ArrayList<String>(Arrays.asList(mContext.getResources().getStringArray(R.array.Sem1)));
         }
         return sem;
+    }
+   public void downloadFromFireStore(String name){
+        mStorageReference = FirebaseStorage.getInstance().getReference();
+        StorageReference books=mStorageReference.child("users")
+                .child("content")
+                .child(name+".pdf");
+        long oneMegaByte=1024*1024*15;
+        final File saved_filed=new File(Environment.getExternalStorageDirectory()+
+                File.separator + "StudyCenter",name+".pdf");
+        if(saved_filed.exists()){
+
+            Toast.makeText(mContext, "File Already Exits", Toast.LENGTH_SHORT).show();
+        }
+        else {
+
+            books.getBytes(oneMegaByte).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                @RequiresApi(api = Build.VERSION_CODES.N)
+                @Override
+                public void onSuccess(byte[] bytes) {
+                    try (FileOutputStream fileOutputStream = new FileOutputStream(saved_filed)) {
+                        fileOutputStream.write(bytes);
+                        fileOutputStream.close();
+                        Log.d("TAG", "onSuccess() returned: " + saved_filed);
+                        Toast.makeText(mContext, "Blackbook Downloaded", Toast.LENGTH_SHORT).show();
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
     }
 }

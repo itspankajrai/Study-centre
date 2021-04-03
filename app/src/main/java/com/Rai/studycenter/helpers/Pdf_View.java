@@ -58,7 +58,6 @@ public class Pdf_View extends AppCompatActivity implements OnPageChangeListener,
 
     private void displayFromAsset(File assetFileName) {
         pdfFileName = assetFileName;
-
         pdfView.fromFile(pdfFile)
                 .defaultPage(pageNumber)
                 .enableSwipe(true)
@@ -68,8 +67,9 @@ public class Pdf_View extends AppCompatActivity implements OnPageChangeListener,
                 .scrollHandle(new DefaultScrollHandle(this))
                 .enableAntialiasing(true)
                 .spacing(0)
-                .autoSpacing(false)
-                .pageFitPolicy(FitPolicy.BOTH)
+                .autoSpacing(true)
+                .pageFitPolicy(FitPolicy.WIDTH) // mode to fit pages in the view
+                .fitEachPage(true)
                 .pageSnap(true)
                 .pageFling(true)
                 .load();
@@ -90,8 +90,6 @@ public class Pdf_View extends AppCompatActivity implements OnPageChangeListener,
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_night_mode_on) {
 
-
-
             if (!mode){
                 pdfView.setNightMode(true);
                 pdfView.loadPages();
@@ -99,11 +97,9 @@ public class Pdf_View extends AppCompatActivity implements OnPageChangeListener,
                 Drawable icon = getResources().getDrawable(R.drawable.night_mode);
                 icon.setColorFilter(getResources().getColor(R.color.black), PorterDuff.Mode.SRC_IN);
                 item.setIcon(icon);
-
                 mode=true;
             }
             else {
-
                 pdfView.setNightMode(false);
                 pdfView.loadPages();
                 nighsite("Night mode Deactivated");
@@ -112,7 +108,6 @@ public class Pdf_View extends AppCompatActivity implements OnPageChangeListener,
                 item.setIcon(icon);
                 mode=false;
             }
-
             return true;
         }
         else if(id==R.id.action_share)
@@ -120,7 +115,6 @@ public class Pdf_View extends AppCompatActivity implements OnPageChangeListener,
             Bitmap bitmap = takeScreenshot();
             saveBitmap(bitmap);
             shareIt();
-
         }
 
 
@@ -133,10 +127,7 @@ public class Pdf_View extends AppCompatActivity implements OnPageChangeListener,
                 .show();
 
     }
-    /*
-    *
-    *
-    * */
+
     public Bitmap takeScreenshot() {
         View rootView = findViewById(R.id.pdfView);
         Bitmap bitmap = Bitmap.createBitmap(rootView.getWidth(), rootView.getHeight(), Bitmap.Config.ARGB_8888);

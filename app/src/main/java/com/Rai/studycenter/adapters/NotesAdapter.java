@@ -106,7 +106,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
                     Toast toast = Toast.makeText(context, text, Toast.LENGTH_LONG);
                     toast.show();
                     //notifyItemChanged(getAdapterPosition());
-                    notifyItemRemoved(getAdapterPosition());
+                    //notifyItemRemoved(getAdapterPosition());
                     notifyItemChanged(getAdapterPosition());
                     notifyItemRangeRemoved(getAdapterPosition(),notesmodelList.size());
                     return true;

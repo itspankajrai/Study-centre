@@ -29,6 +29,7 @@ import com.Rai.studycenter.firebase.profile.UserProfile;
 import com.Rai.studycenter.firebase.ui.FirebaseMenuActivity;
 import com.Rai.studycenter.firebase.ui.Firebase_StudyMaterial;
 import com.Rai.studycenter.firebase.ui.TimeTableFirebaseActivity;
+import com.Rai.studycenter.gridSelect.ResultActivity;
 import com.Rai.studycenter.gridSelect.Study_Material;
 import com.Rai.studycenter.gridSelect.blackbook;
 import com.Rai.studycenter.gridSelect.mock_test;
@@ -94,7 +95,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         }
                         else {
                             snack("Blackbook download started");
-                            new DownloadFileAsync(MainActivity.this,1,"blackbook.pdf").execute(blackBookUrl);
+                            startClass.downloadFromFireStore("blackbook");
+                            //new DownloadFileAsync(MainActivity.this,1,"blackbook.pdf").execute(blackBookUrl);
                         }
                              /*changeActivity(blackbook.class);*/
                         break;
@@ -105,13 +107,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         changeActivity(notes.class);
                         break;
                     case 7:
-                        if(checkFile("results.pdf")){
-                            startClass.changeActivity(MainActivity.this,"pdf_path", "results.pdf");
-                        }
-                        else {
-                            snack("results download started");
-                            new DownloadFileAsync(MainActivity.this,1,"results.pdf").execute(blackBookUrl);
-                        }
+                        changeActivity(ResultActivity.class);
                         break;
                     default:
                         snack();
