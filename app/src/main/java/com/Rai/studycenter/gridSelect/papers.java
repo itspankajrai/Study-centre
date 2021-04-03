@@ -18,11 +18,6 @@ import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-
-import static com.Rai.studycenter.constant.Constant.answers;
-import static com.Rai.studycenter.constant.Constant.opt;
-import static com.Rai.studycenter.constant.Constant.questions;
 
 public class papers extends AppCompatActivity {
     private RecyclerView recyclerView;

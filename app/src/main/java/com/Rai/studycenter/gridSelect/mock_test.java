@@ -17,12 +17,10 @@ import com.Rai.studycenter.mock_test.mock_testmcq;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
-import static com.Rai.studycenter.constant.Constant.answers;
-import static com.Rai.studycenter.constant.Constant.opt;
-import static com.Rai.studycenter.constant.Constant.questions;
-import static com.Rai.studycenter.constant.Constant.sicAnswers;
-import static com.Rai.studycenter.constant.Constant.sicOptions;
-import static com.Rai.studycenter.constant.Constant.sicQuestions;
+import static com.Rai.studycenter.constant.Constant.DEAnswers;
+import static com.Rai.studycenter.constant.Constant.DEOptions;
+import static com.Rai.studycenter.constant.Constant.DEQuestions;
+
 
 public class mock_test extends AppCompatActivity {
     StartClass startClass;
@@ -107,7 +105,7 @@ public class mock_test extends AppCompatActivity {
                 if(chip1!=null) {
                     String sub_name = chip1.getText().toString();
                     Toast.makeText(mock_test.this, "Opening mock test for "+sub_name, Toast.LENGTH_SHORT).show();
-                    changeActivity(questions,answers,opt);
+                    changeActivity(DEQuestions,DEAnswers,DEOptions);
                     chip1.setChecked(false);
                 }
                 else {
@@ -128,6 +126,7 @@ public class mock_test extends AppCompatActivity {
         sem1.putExtra("ans", ans);
         sem1.putExtra("crt", options);
         startActivity(sem1);
+
     }
 
 }

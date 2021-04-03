@@ -10,25 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.Rai.studycenter.R;
-import com.Rai.studycenter.mock_test.mock_testmcq;
-
-import java.util.ArrayList;
-
-import static com.Rai.studycenter.constant.Constant.answers;
-import static com.Rai.studycenter.constant.Constant.answers2;
-import static com.Rai.studycenter.constant.Constant.opt;
-import static com.Rai.studycenter.constant.Constant.opt2;
-import static com.Rai.studycenter.constant.Constant.questions;
-import static com.Rai.studycenter.constant.Constant.questions2;
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.Rai.studycenter.R;
 
 public class quiz_Adapter extends BaseAdapter {
     private Context context;
