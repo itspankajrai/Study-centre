@@ -15,7 +15,6 @@
         >
 
         <androidx.viewpager.widget.PagerTabStrip
-            android:id="@+id/pager_header"
             style="@style/MyVpTabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

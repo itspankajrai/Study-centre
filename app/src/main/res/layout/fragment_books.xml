@@ -41,42 +41,36 @@
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/bookschip1"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Sem 1" />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/bookschip2"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Sem 2" />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/bookschip3"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Sem 3" />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/bookschip4"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Sem 4" />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/bookschip5"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Sem 5" />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/bookschip6"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -130,7 +124,6 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/books_college_key_edt"
             android:layout_width="match_parent"
             android:inputType="number"
             android:maxLength="5"

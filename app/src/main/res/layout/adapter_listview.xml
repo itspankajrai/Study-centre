@@ -25,7 +25,7 @@
             android:visibility="gone"
             style="@android:style/Widget.ProgressBar.Horizontal"
             android:textColor="@android:color/black" />
-        <TextView android:id="@+id/output"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#FF8A80"

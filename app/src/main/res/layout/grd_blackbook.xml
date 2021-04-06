@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".gridSelect.blackbook">
     <TextView
-        android:id="@+id/grd_prac_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="45dp"
@@ -17,7 +16,6 @@
         android:text="BlackBook Not Available"
         tools:ignore="MissingConstraints" />
     <ImageView
-        android:id="@+id/grd_pact_img"
         android:padding="10px"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -45,72 +45,6 @@
         <item>Cyber Laws</item>
         <item>Project Implementation</item>
     </string-array>
-    <string-array name="ip_q">
-        <item>Which method can be defined only once in a program?</item>
-        <item>Which of these is not a bitwise operator?</item>
-        <item>Which keyword is used by method to refer to the object that invoked it?</item>
-        <item>Which of these keywords is used to define interfaces in Java?</item>
-        <item>Which of these access specifiers can be used for an interface?</item>
-        <item>Which of the following is correct way of importing an entire package ‘pkg’?</item>
-        <item>What is the return type of Constructors?</item>
-        <item>Which of the following package stores all the standard java classes?</item>
-        <item>Which of these method of class String is used to compare two String objects for their equality?</item>
-        <item>An expression involving byte, int, &amp; literal numbers is promoted to which of these?</item>
-    </string-array>
-    <string-array name="ip_opt">
-        <item>finalize method</item>
-        <item>main method</item>
-        <item>static method</item>
-        <item>private method</item>
-        <item>finalize method</item>
-        <item>main method</item>
-        <item>static method</item>
-        <item>private method</item>
-        <item>finalize method</item>
-        <item>main method</item>
-        <item>static method</item>
-        <item>private method</item>
-        <item>finalize method</item>
-        <item>main method</item>
-        <item>static method</item>
-        <item>private method</item>
-        <item>finalize method</item>
-        <item>main method</item>
-        <item>static method</item>
-        <item>private method</item>
-        <item>finalize method</item>
-        <item>main method</item>
-        <item>static method</item>
-        <item>private method</item>
-        <item>finalize method</item>
-        <item>main method</item>
-        <item>static method</item>
-        <item>private method</item>
-        <item>finalize method</item>
-        <item>main method</item>
-        <item>static method</item>
-        <item>private method</item>
-        <item>finalize method</item>
-        <item>main method</item>
-        <item>static method</item>
-        <item>private method</item>
-        <item>finalize method</item>
-        <item>main method</item>
-        <item>static method</item>
-        <item>private method</item>
-    </string-array>
-    <string-array name="ip_ans">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-    </string-array>
     <!-- Reply Preference -->
     <string-array name="reply_entries">
         <item>Dark</item>
@@ -121,36 +55,8 @@
         <item>Dark</item>
         <item>Light</item>
     </string-array>
-    <string-array name="font_values">
-        <item>Roboto</item>
-        <item>Sans</item>
-    </string-array>
     <string-array name="font_entries">
         <item>Roboto</item>
         <item>Sans</item>
-    </string-array>
-    <string-array name="date">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-    </string-array>
-    <string-array name="time">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
     </string-array>
 </resources>

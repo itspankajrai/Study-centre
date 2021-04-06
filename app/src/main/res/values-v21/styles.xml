@@ -26,9 +26,7 @@
     <item name="tabBackground">?attr/selectableItemBackground</item>
     <item name="tabSelectedTextColor">?android:textColorPrimary</item>
 </style>
-    <style name="PreferenceCategory" parent="AppTheme">
-        <item name="android:textColor">@color/colorPrimary</item>
-    </style>
+
     <style name="NavigationView">
         <item name="android:textColorSecondary">@color/colorPrimary</item>
     </style>

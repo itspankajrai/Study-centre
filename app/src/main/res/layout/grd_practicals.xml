@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/activity_main"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".gridSelect.practicals">
     <TextView
-        android:id="@+id/grd_prac_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="45dp"
@@ -18,7 +15,6 @@
         android:text="Practicals Not Available"
         tools:ignore="MissingConstraints" />
     <ImageView
-        android:id="@+id/grd_pact_img"
         android:padding="10px"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -32,7 +28,6 @@
         android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageViewocr"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginTop="16dp"

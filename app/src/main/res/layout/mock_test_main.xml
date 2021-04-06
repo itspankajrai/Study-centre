@@ -84,7 +84,6 @@
         app:cardElevation="4dp"
 
         android:layout_below="@+id/crad_view2"
-        android:id="@+id/crad_view3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
@@ -127,7 +126,6 @@
         android:layout_height="24dp"
         android:textAppearance="@color/abc_background_cache_hint_selector_material_dark"
         android:text="Your Score"
-        android:id="@+id/textView3"
         android:textColor="#000000"
         android:textSize="19dp"
         android:layout_alignParentBottom="true"
