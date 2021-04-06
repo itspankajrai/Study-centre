@@ -14,12 +14,24 @@ import androidx.cardview.widget.CardView;
 import com.Rai.studycenter.R;
 import com.Rai.studycenter.firebase.firebaseutils.StartClass;
 import com.Rai.studycenter.mock_test.mock_testmcq;
+import com.Rai.studycenter.models.mockTestModel;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
+import java.util.HashMap;
+
+import static com.Rai.studycenter.constant.Constant.CSanswers;
+import static com.Rai.studycenter.constant.Constant.CSoptions;
+import static com.Rai.studycenter.constant.Constant.CSquestions;
 import static com.Rai.studycenter.constant.Constant.DEAnswers;
 import static com.Rai.studycenter.constant.Constant.DEOptions;
 import static com.Rai.studycenter.constant.Constant.DEQuestions;
+import static com.Rai.studycenter.constant.Constant.IPanswers;
+import static com.Rai.studycenter.constant.Constant.IPoptions;
+import static com.Rai.studycenter.constant.Constant.IPquestions;
+import static com.Rai.studycenter.constant.Constant.OPanswers;
+import static com.Rai.studycenter.constant.Constant.OPoptions;
+import static com.Rai.studycenter.constant.Constant.OPquestions;
 
 
 public class mock_test extends AppCompatActivity {
@@ -29,11 +41,13 @@ public class mock_test extends AppCompatActivity {
     static final String[] sem_list = new String[] {
             "Sem 6","Sem 1", "Sem 2","Sem 3", "Sem 4","Sem 5" };
     String currentSem;
+    HashMap<String, mockTestModel> sem;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.grd_mock_test);
         startClass=new StartClass(this);
+        mapIT();
         chipGroup=findViewById(R.id.mock_chip_group);
         chipGroup.setSingleSelection(true);
         chipGroupSubejcts=findViewById(R.id.mock_text_subjects);
@@ -104,9 +118,15 @@ public class mock_test extends AppCompatActivity {
                 Chip chip1=findViewById(checkedId);
                 if(chip1!=null) {
                     String sub_name = chip1.getText().toString();
-                    Toast.makeText(mock_test.this, "Opening mock test for "+sub_name, Toast.LENGTH_SHORT).show();
-                    changeActivity(DEQuestions,DEAnswers,DEOptions);
+                    //Toast.makeText(mock_test.this, "Opening mock test for "+sub_name, Toast.LENGTH_SHORT).show();
+                    mockTestModel model=sem.get(sub_name);
+                    if(model!=null){
+                    changeActivity(model.getQuestion(),model.getAnswer(),model.getOptions());
                     chip1.setChecked(false);
+                    }
+                    else {
+                        Toast.makeText(mock_test.this, "Data for this subject will be added soon", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else {
                 }
@@ -128,5 +148,11 @@ public class mock_test extends AppCompatActivity {
         startActivity(sem1);
 
     }
-
+    void mapIT(){
+       sem=new HashMap<>();
+       sem.put("Digital Electronics",new mockTestModel(DEQuestions,DEAnswers,DEOptions));
+       sem.put("Imprative Programming",new mockTestModel(IPquestions,IPanswers,IPoptions));
+       sem.put("Operating System",new mockTestModel(OPquestions,OPanswers,OPoptions));
+       sem.put("Communication Skills",new mockTestModel(CSquestions,CSanswers,CSoptions));
+    }
 }
