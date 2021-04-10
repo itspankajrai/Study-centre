@@ -36,45 +36,83 @@
             android:padding="8dp">
 
             <com.google.android.material.chip.ChipGroup
+                android:layout_marginStart="16dp"
                 android:id="@+id/bookschipGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.chip.Chip
+                    app:chipStartPadding="8dp"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sem 1" />
+                    app:chipIconEnabled="true"
+                    app:chipIcon="@drawable/study_material"
+                    android:text="Sem 1"
+                    app:chipIconTint="@color/white"
+                    />
 
                 <com.google.android.material.chip.Chip
+                    app:chipStartPadding="8dp"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sem 2" />
+                    app:chipIconEnabled="true"
+                    app:chipIcon="@drawable/study_material"
+                    android:text="Sem 2"
+
+                    app:chipIconTint="@color/white"
+                    />
 
                 <com.google.android.material.chip.Chip
+                    app:chipStartPadding="8dp"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sem 3" />
+                    app:chipIconEnabled="true"
+                    app:chipIcon="@drawable/study_material"
+                    android:text="Sem 3"
+
+                    app:chipIconTint="@color/white"
+                    />
 
                 <com.google.android.material.chip.Chip
+                    app:chipStartPadding="8dp"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sem 4" />
+                    app:chipIconEnabled="true"
+                    app:chipIcon="@drawable/study_material"
+                    android:text="Sem 4"
+
+
+                    app:chipIconTint="@color/white"
+                    />
 
                 <com.google.android.material.chip.Chip
+                    app:chipStartPadding="8dp"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sem 5" />
+                    app:chipIconEnabled="true"
+                    app:chipIcon="@drawable/study_material"
+                    android:text="Sem 5"
+
+                    app:chipIconTint="@color/white"
+                    />
 
                 <com.google.android.material.chip.Chip
+                    app:chipStartPadding="8dp"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sem 6" />
+                    android:text="Sem 6"
+                    app:chipIconEnabled="true"
+                    app:chipIcon="@drawable/study_material"
+
+                    app:chipIconTint="@color/white"
+
+                    />
             </com.google.android.material.chip.ChipGroup>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

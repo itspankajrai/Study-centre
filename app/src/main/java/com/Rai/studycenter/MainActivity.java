@@ -206,11 +206,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nav_result:
-                snack();
+                changeActivity(ResultActivity.class);
                 break;
 
             case R.id.nav_timetable:
-                snack();
+                changeActivity(TimeTableFirebaseActivity.class);
                 break;
 
             case R.id.nav_downloads :

@@ -15,6 +15,8 @@ import androidx.annotation.RequiresApi;
 import com.Rai.studycenter.R;
 import com.Rai.studycenter.helpers.Pdf_View;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -33,11 +35,16 @@ public  class StartClass implements start_interface{
     SharedPreferences sharedPreferences;
     Context mContext;
     File checkF ;
+    Activity activity;
     public StartClass(){
 
     }
     public StartClass(Context mContext) {
         this.mContext = mContext;
+
+    }
+    public StartClass(Activity activity){
+        this.activity=activity;
     }
 
     @Override
@@ -124,6 +131,16 @@ public  class StartClass implements start_interface{
                     }
                 }
             });
+        }
+    }
+
+    public void setChip(ChipGroup semChipsGroup){
+        String[] sem={"Sem 1","Sem 2","Sem 3","Sem 4","Sem 5","Sem 6"};
+
+        for(int i=0;i<sem.length;i++){
+            Chip chip=(Chip)activity.getLayoutInflater().inflate(R.layout.chip,null,false);
+            chip.setText(sem[i]);
+            semChipsGroup.addView(chip,semChipsGroup.getChildCount()-1);
         }
     }
 }
