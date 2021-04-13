@@ -16,7 +16,9 @@ public class practicals extends AppCompatActivity {
         setContentView(R.layout.grd_practicals);
         startClass=new StartClass(practicals.this);
         practicalChipGroup=findViewById(R.id.practicalChipGroup);
+        practicalChipGroup.setSingleSelection(true);
         startClass.setChip(practicalChipGroup);
+
 
     }
 }

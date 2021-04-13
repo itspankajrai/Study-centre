@@ -23,7 +23,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".gridSelect.ResultActivity"></activity>
+        <activity android:name=".helpers.practical_list_ui"></activity>
+        <activity
+            android:name=".helpers.YoutubePlayInApp"
+            android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout" />
+        <activity android:name=".gridSelect.ResultActivity" />
         <activity android:name=".firebase.ui.FirebaseMenuActivity" />
         <activity android:name=".firebase.ui.TimeTableFirebaseActivity" />
         <activity android:name=".note_module.NoteViewerActivity" />

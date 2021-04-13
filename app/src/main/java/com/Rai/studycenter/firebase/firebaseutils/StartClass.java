@@ -8,12 +8,17 @@ import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 
 import com.Rai.studycenter.R;
 import com.Rai.studycenter.helpers.Pdf_View;
+import com.Rai.studycenter.helpers.YoutubePlayInApp;
+import com.Rai.studycenter.helpers.practical_list_ui;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
@@ -44,6 +49,7 @@ public  class StartClass implements start_interface{
 
     }
     public StartClass(Activity activity){
+        this.mContext=activity;
         this.activity=activity;
     }
 
@@ -140,7 +146,55 @@ public  class StartClass implements start_interface{
         for(int i=0;i<sem.length;i++){
             Chip chip=(Chip)activity.getLayoutInflater().inflate(R.layout.chip,null,false);
             chip.setText(sem[i]);
+            semChipsGroup.setOnCheckedChangeListener(new ChipGroup.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(ChipGroup group, int checkedId) {
+                    Chip chip1=activity.findViewById(checkedId);
+                    if(chip1!=null){
+                        Toast.makeText(activity, "Selected " + chip1.getText().toString(), Toast.LENGTH_SHORT).show();
+                        setPracticalList(getSemArray(chip1.getText().toString()));
+                    }
+                    else {
+                        Toast.makeText(activity, "Unselected", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
             semChipsGroup.addView(chip,semChipsGroup.getChildCount()-1);
         }
+    }
+
+    void setPracticalList(ArrayList<String> data){
+        final String[] links_id={"cAguVBZZI94&t","PMXnOnl4ack","Pk5rg-FBJig","SMEfDh1qMs","apR07ILsMVs","YyGzR3iKrDo"};
+        final String[] names={"1(d) Create a simple web page to demonstrate the following opearion:\n" +
+                "1 . Generate Fibonacci series\n" +
+                "2 .Test for prime numbers\n" +
+                "3.Test for vowels\n" +
+                "4.Reverse a number",
+                "3(a) Create a simple web page with various sever " +
+                "\ncontrols to demonstrate setting and use of their " +
+                "properties. (Example : AutoPostBack)",
+                "3(b) Demonstrate the use of Calendar control to perform following operations.\n" +
+                        "a) Display messages in a calendar control\n" +
+                        "b) Display vacation in a calendar control\n" +
+                        "c) Selected day in a calendar control using style\n" +
+                        "d) Difference between two calendar dates",
+                "4(c) Create Web Form to demonstrate use of User Control.",
+                "5(b) Create a web application to demonstrate use of Master Page with applying Styles and Themes for page beautification.",
+                "6(a) Create a web application to bind data in a multiline textbox by querying in another textbox."
+        };
+
+        ListView listView=activity.findViewById(R.id.practical_list);
+        final ArrayAdapter adapter = new ArrayAdapter<String>(mContext,android.R.layout.simple_list_item_1,android.R.id.text1,data);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(activity, "You Clicked at " +adapter.getItem(i), Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(activity, practical_list_ui.class);
+                intent.putExtra("video_titles",names);
+                intent.putExtra("video_ids",links_id);
+                activity.startActivity(intent);
+            }
+        });
     }
 }
